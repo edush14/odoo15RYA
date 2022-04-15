@@ -3,7 +3,7 @@
     'name': 'NOmbre',
     'category': 'uncategorize',
     'author': 'ITGRUPO',
-    'depends': ['base'],
+    'depends': ['mrp'],
     'version': '1.0',
     'description':"""
      Descripcion

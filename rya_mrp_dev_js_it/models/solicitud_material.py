@@ -36,7 +36,7 @@ class SolicitudProduction(models.Model):
             raise ValueError('No tiene Lineas de Productos')
         self.state = 'comfirm'
         for l in self.order_line:
-            raise ValueError(l.order_id.mrp_production.production_location_id.id)
+            #raise ValueError(l.order_id.mrp_production.production_location_id.id)
             self.mrp_production.move_raw_ids += self.env['stock.move'].new({
                 'product_id': l.product_id.id ,
                 'name':  l.product_id.display_name,

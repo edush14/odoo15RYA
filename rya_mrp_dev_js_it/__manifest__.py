@@ -15,6 +15,7 @@
         'security/ir.model.access.csv',
         #'views/mrp_production.xml',
         'views/solicitud_material.xml',
+        'views/mrp_bom_line.xml',
         ],
     'installable': True
 }

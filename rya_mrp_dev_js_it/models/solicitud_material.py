@@ -7,7 +7,7 @@ class SolicitudProduction(models.Model):
     state = fields.Selection([('drat','Borrador'),('comfirm','Aprobada')])
     order_line = fields.One2many('solicitud.production.line', 'order_id', string='Order Lines', copy=True)
     date_order = fields.Datetime(string='Order Date', required=True, readonly=True, index=True,
-                                 states={'draft': [('readonly', False)], 'sent': [('readonly', False)]}, copy=False,
+                                 copy=False,
                                  default=fields.Datetime.now,
                                  help="Creation date of draft/sent orders,\nConfirmation date of confirmed orders.")
     user_id = fields.Many2one(
@@ -31,12 +31,20 @@ class SolicitudProduction(models.Model):
         return result
 
     def fun_aprobar(self):
+        if not self.order_line:
+            raise ValueError('No tiene Lineas de Productos')
         self.state = 'comfirm'
+        for l in self.order_line:
+            self.mrp_production.move_raw_ids += self.env['stock.move'].new({
+                'product_id': l.product_id.id ,
+                'quantity_done': l.consumed
+            })
+
 
 class SolicitudProductionLine(models.Model):
     _name = 'solicitud.production.line'
     order_id = fields.Many2one('mrp_production',ondelete='restrict')
-    product_id = fields.Many2one('product.product',string="Producto",ondelete='restrict')
+    product_id = fields.Many2one('product.product',string="Producto",ondelete='restrict',required=True)
     consumed = fields.Float()
 
 

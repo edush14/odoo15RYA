@@ -37,7 +37,8 @@ class SolicitudProduction(models.Model):
         self.state = 'comfirm'
         for l in self.order_line:
             #raise ValueError(l.order_id.mrp_production.production_location_id.id)
-            self.mrp_production.move_raw_ids += self.env['stock.move'].new({
+            '''
+            dx = {
                 'product_id': l.product_id.id ,
                 'name':  l.product_id.display_name,
                 'quantity_done': l.consumed,
@@ -46,7 +47,12 @@ class SolicitudProduction(models.Model):
                 'location_dest_id': l.order_id.mrp_production.location_dest_id.id ,
                 'solicitud_production': l.order_id.id ,
 
-            })
+            }
+            '''
+
+            dx  = l.order_id._get_move_raw_values(l.product_id, l.consumed,l.product_id.uom_id, False, False)
+            dx['solicitud_production'] = l.order_id.id
+            self.mrp_production.move_raw_ids += self.env['stock.move'].new(dx)
 
 
 class SolicitudProductionLine(models.Model):

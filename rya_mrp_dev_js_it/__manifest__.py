@@ -13,7 +13,7 @@
     'data': [
         'data/ir_sequence_data.xml',
         'security/ir.model.access.csv',
-        #'views/mrp_production.xml',
+        'views/mrp_production.xml',
         'views/solicitud_material.xml',
         'views/mrp_bom_line.xml',
         ],

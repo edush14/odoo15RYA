@@ -3,8 +3,9 @@ class SolicitudProduction(models.Model):
     _name = 'solicitud.production'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     name = fields.Char()
-    mrp_production = fields.Many2one('mrp.production',string="Orden de Produccion",ondelete='restrict')
-    state = fields.Selection([('drat','Borrador'),('comfirm','Aprobada')])
+    mrp_production = fields.Many2one('mrp.production',string="Orden de Produccion",
+                                     ondelete='restrict',required=True)
+    state = fields.Selection([('draft','Borrador'),('comfirm','Aprobada')],default='draft')
     order_line = fields.One2many('solicitud.production.line', 'order_id', string='Order Lines', copy=True)
     date_order = fields.Datetime(string='Order Date', required=True, readonly=True, index=True,
                                  copy=False,

@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+sale_guia,sale_guia,model_solicitud_production,,1,1,1,1
+sale_guia_line,sale_guia_line,model_solicitud_production,,1,1,1,1

@@ -11,8 +11,10 @@
     'auto_install': False,
     'demo': [],
     'data': [
-        #'security/security.xml',
-        #'views/views.xml',
+        'data/ir_sequence_data.xml',
+        'security/ir.model.access.csv',
+        'views/mrp_production.xml',
+        'views/solicitud_material.xml',
         ],
     'installable': True
 }

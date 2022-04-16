@@ -44,7 +44,7 @@ class SolicitudProduction(models.Model):
 class SolicitudProductionLine(models.Model):
     _name = 'solicitud.production.line'
     name = fields.Char(related="product_id.display_name")
-    order_id = fields.Many2one('mrp_production',ondelete='restrict')
+    order_id = fields.Many2one('solicitud.production',ondelete='restrict')
     product_id = fields.Many2one('product.product',string="Producto",ondelete='restrict',required=True)
     consumed = fields.Float()
 

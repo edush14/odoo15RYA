@@ -4,5 +4,5 @@ class MrpBomLine(models.Model):
     stage_id = fields.Many2one('stage.mrpline',string="Etapa")
 
 class StageMrpBomLine(models.Model):
-    _inherit = 'stage.mrpline'
+    _name = 'stage.mrpline'
     name = fields.Char()

@@ -40,7 +40,8 @@ class SolicitudProduction(models.Model):
                 'product_id': l.product_id.id ,
                 'name':  l.product_id.display_name,
                 'quantity_done': l.consumed,
-                'product_uom': l.product_id.uom_id.id ,
+                'product_uom': l.product_id.uom_id.id,
+                'location_id': 	l.product_id.location_id.id,
 
             })
 

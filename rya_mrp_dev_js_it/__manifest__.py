@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 {
-    'name': 'NOmbre',
+    'name': 'RYA DESARROLLO',
     'category': 'uncategorize',
     'author': 'ITGRUPO',
     'depends': ['mrp'],

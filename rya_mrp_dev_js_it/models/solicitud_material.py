@@ -38,7 +38,9 @@ class SolicitudProduction(models.Model):
         for l in self.order_line:
             self.mrp_production.move_raw_ids += self.env['stock.move'].new({
                 'product_id': l.product_id.id ,
-                'quantity_done': l.consumed
+                'name':  l.product_id.display_name ,
+                'quantity_done': l.consumed ,
+
             })
 
 

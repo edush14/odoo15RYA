@@ -50,8 +50,8 @@ class SolicitudProduction(models.Model):
             }
             '''
 
-            dx  = l.order_id._get_move_raw_values(l.product_id, l.consumed,l.product_id.uom_id, False, False)
-            dx['solicitud_production'] = l.order_id.id
+            dx  = l.order_id.mrp_production._get_move_raw_values(l.product_id, l.consumed,l.product_id.uom_id, False, False)
+            dx['solicitud_production_line'] = l.id
             self.mrp_production.move_raw_ids += self.env['stock.move'].new(dx)
 
 

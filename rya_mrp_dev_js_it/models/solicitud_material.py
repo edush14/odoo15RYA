@@ -43,6 +43,7 @@ class SolicitudProduction(models.Model):
                 'quantity_done': l.consumed,
                 'product_uom': l.product_id.uom_id.id,
                 'location_id': 	l.order_id.mrp_production.production_location_id.id,
+                'location_dest_id': l.order_id.mrp_production.location_dest_id.id ,
 
             })
 

@@ -61,8 +61,7 @@
 
                     <notebook>
                         <page string="Detalle">
-                            <field name="order_line"
-                                   widget="section_and_note_one2many"  mode="tree,kanban">
+                            <field name="order_line"  >
                                 <tree editable="bottom" >
                                         <field name="product_id"   />
                                         <field name="consumed"   />

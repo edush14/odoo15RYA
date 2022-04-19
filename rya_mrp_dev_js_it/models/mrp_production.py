@@ -34,7 +34,7 @@ class MrpProduction(models.Model):
     def change_plantilla(self):
         for record in self:
             if record.plantilla_ratio:
-                #record.ratios.unlink()
+                record.ratios.unlink()
                 lines = record.plantilla_ratio.order_line
                 for l in lines:
                     record.ratios += self.env['mrp.ratios.lines'].new({
@@ -49,7 +49,7 @@ class PlantillaRatiosLine(models.Model):
     quantity = fields.Float(string="Cantidad")
     price_unit = fields.Float(string="Costo Unitario")
     price_total = fields.Float(string="Precio Total")
-    order_id = fields.Many2one('plantilla.ratios', ondelete='restrict')
+    order_id = fields.Many2one('mrp.production', ondelete='restrict')
     @api.depends('quantity','price_unit')
     def change_total(self):
         for record in self:

@@ -34,7 +34,7 @@ class MrpProduction(models.Model):
     def change_plantilla(self):
         for record in self:
             if record.plantilla_ratio:
-                record.ratios.unlink()
+                #record.ratios.unlink()
                 lines = record.plantilla_ratio.order_line
                 for l in lines:
                     record.ratios += self.env['mrp.ratios.lines'].new({

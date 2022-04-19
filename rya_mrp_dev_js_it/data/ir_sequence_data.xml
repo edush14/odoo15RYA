@@ -12,4 +12,9 @@
         </record>
 
     </data>
+
+    <record id="default_plantilla" model="plantilla.ratios">
+            <field name="name">PLANTILLA POR DEFECTO</field>
+    </record>
+
 </odoo>

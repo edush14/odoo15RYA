@@ -29,7 +29,7 @@ class MrpProduction(models.Model):
         plantilla_default = self.env['plantilla.ratios'].search([('is_default', '=', True)])
         if plantilla_default:
             res.update({'plantilla_ratio': plantilla_default[0].id})
-        return
+        return res
     @api.onchange('plantilla_ratio')
     def change_plantilla(self):
         for record in self:

@@ -8,7 +8,15 @@
                 <xpath expr="//notebook/page[@name='components']/field/tree/field[@name='location_id']" position="after">
                     <field name="solicitud_production" optional="show"/>
                     <field name="stage_id" optional="show"/>
-               </xpath>
+                </xpath>
+                <xpath expr="//notebook" position="inside">
+                    <page string="Costos Operativos" name="costos_operativos">
+                        <group>
+
+                        </group>
+                    </page>
+
+                </xpath>
             </field>
     </record>
 </odoo>

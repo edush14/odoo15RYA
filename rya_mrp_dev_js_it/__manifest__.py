@@ -16,6 +16,7 @@
         'views/mrp_production.xml',
         'views/solicitud_material.xml',
         'views/mrp_bom_line.xml',
+        'views/plantilla_ratios'
         ],
     'installable': True
 }

@@ -32,6 +32,9 @@
                             <field name="name" readonly="1"/>
                         </h1>
                     </div>
+                    <group>
+                        <field name="is_default"  />
+                    </group>
 
                     <notebook>
                         <page string="Detalle">

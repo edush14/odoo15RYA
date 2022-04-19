@@ -13,8 +13,20 @@
                     <page string="Costos Operativos" name="costos_operativos">
                         <group>
                             <field name="plantilla_ratio" />
-                            <field name="ratios" />
+
                         </group>
+
+                        <field name="ratios" >
+                            <tree editable="bottom" >
+
+                                <field name="name" />
+                                <field name="quantity" />
+                                <field name="price_unit" />
+                                <field name="price_total" />
+
+                            </tree>
+
+                        </field>
                     </page>
 
                 </xpath>

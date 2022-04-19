@@ -46,9 +46,9 @@ class MrpProduction(models.Model):
 class PlantillaRatiosLine(models.Model):
     _name = 'mrp.ratios.lines'
     name = fields.Char(required=True)
-    quantity = fields.Float(string="Cantidad")
+    quantity = fields.Float(string="Cantidad",default=1)
     price_unit = fields.Float(string="Costo Unitario")
-    price_total = fields.Float(string="Precio Total")
+    price_total = fields.Float(string="Precio Total",compute="change_total")
     order_id = fields.Many2one('mrp.production', ondelete='restrict')
     @api.depends('quantity','price_unit')
     def change_total(self):

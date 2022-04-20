@@ -17,7 +17,7 @@
         'views/solicitud_material.xml',
         'views/mrp_bom_line.xml',
         'views/plantilla_ratios.xml',
-        'views/ost_structure_report.xml'
+        'views/cost_structure_report.xml'
         ],
     'installable': True
 }

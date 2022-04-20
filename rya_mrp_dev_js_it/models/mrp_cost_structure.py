@@ -75,7 +75,7 @@ class MrpCostStructure(models.AbstractModel):
                     'qty': qty,
                     'cost': cost,
                     'product_id': ProductProduct.browse(product_id),
-                    'sm': StockMove.browse((sm))
+                    'sm': StockMove.browse(sm)
                 })
                 total_cost_by_mo[mo_id] += cost
                 component_cost_by_mo[mo_id] += cost

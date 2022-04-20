@@ -220,7 +220,7 @@
                                 </tr>
                                 <tr>
                                     <td colspan="3" class="text-right">
-                                        <strong>Total Cost</strong>
+                                        <strong>Total Cost Operating</strong>
                                     </td>
                                     <td class="text-right">
                                         <span t-esc="total_ratio"  />

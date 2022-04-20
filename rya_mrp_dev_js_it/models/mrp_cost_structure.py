@@ -121,8 +121,8 @@ class MrpCostStructure(models.AbstractModel):
 
             ratios = self.env['mrp.ratios.lines'].search([('order_id', 'in', mos.ids)])
             total_ratio = 0
-            for m in mos:
-                total_ratio += m.total_amount_ratios
+            for m in ratios:
+                total_ratio += m.price_total
 
             res.append({
                 'product': product,

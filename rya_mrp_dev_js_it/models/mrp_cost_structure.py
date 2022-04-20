@@ -132,15 +132,17 @@ class MrpCostStructure(models.AbstractModel):
                     cantidad_total += r.quantity_done
 
             amount_to_cost = 0
-
+            avg_cost = 0
 
             for r in raw_material_moves:
-                amount_to_cost +=  r['cost_origin']
+                amount_to_cost += r['cost_origin']
+                avg_cost += r['cost']
 
-            total_origin_unit = amount_to_cost / cantidad_total if cantidad_total != 0 else cantidad_total
-            total_ratiox_unit = total_ratiox / cantidad_total if cantidad_total != 0 else cantidad_total
+            total_production_cost = avg_cost + total_ratiox
 
-            #raise ValueError(total_ratio)
+            total_origin_unit = amount_to_cost / cantidad_total if cantidad_total != 0 else amount_to_cost
+            total_operation_unit = total_production_cost / cantidad_total if cantidad_total != 0 else total_ratiox
+            avg_cost_unit = avg_cost / cantidad_total if cantidad_total != 0 else avg_cost
 
             res.append({
                 'product': product,
@@ -161,7 +163,9 @@ class MrpCostStructure(models.AbstractModel):
                 'ratios': ratios ,
                 'total_ratio': total_ratiox ,
                 'total_origin_unit':  total_origin_unit ,
-                'total_ratio_unit': total_ratiox_unit ,
-                'amount_to_cost': amount_to_cost
+                'total_operation_unit': total_operation_unit ,
+                'amount_to_cost': amount_to_cost ,
+                'avg_cost':avg_cost,
+                'avg_cost_unit':avg_cost_unit
             })
         return res

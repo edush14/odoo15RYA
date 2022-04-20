@@ -52,6 +52,7 @@ class MrpProduction(models.Model):
         for l in self.move_byproduct_ids:
             total_count += l.quantity_done
             #l.change_qtyy()
+        total_count += self.product_uom_qty
         for l in self.move_byproduct_ids:
             if total_count != 0:
                 l.cost_share += (l.quantity_done / total_count) * 100

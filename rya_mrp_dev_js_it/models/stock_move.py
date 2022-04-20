@@ -12,5 +12,6 @@ class StockMove(models.Model):
         for record in self:
             record._compute_should_consume_qty()
             record.should_consume_qty_store = record.should_consume_qty
+            raise ValueError(record.should_consume_qty_store)
 
 

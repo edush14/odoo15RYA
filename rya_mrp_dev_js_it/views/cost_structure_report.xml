@@ -83,7 +83,7 @@
                                 </td>
                             </tr>
                             <tr t-if="not line['qty_by_byproduct_w_costshare'] and line['mo_qty'] &gt; 1" >
-                                <td colspan="3" class="text-right">
+                                <td colspan="5" class="text-right">
                                     <strong>Cost of Components per unit (in <t t-esc="line['product'].uom_id.name"/>)</strong>
                                 </td>
                                 <td class="text-right">

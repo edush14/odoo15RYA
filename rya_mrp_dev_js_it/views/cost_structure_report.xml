@@ -312,6 +312,7 @@
                                     <td>
                                         <span t-esc="byproduct[0].name"/>
                                     </td>
+                                    <!--
                                     <td class="text-right">
                                         <span t-esc="line['component_cost_by_product'][byproduct[0]] / byproduct[1]" t-options='{"widget": "monetary", "display_currency": currency}'/>
                                     </td>
@@ -320,6 +321,10 @@
                                     </td>
                                     <td class="text-right">
                                         <span t-esc="line['total_cost_by_product'][byproduct[0]] / byproduct[1]" t-options='{"widget": "monetary", "display_currency": currency}'/>
+                                    </td>
+                                    -->
+                                    <td class="text-right">
+                                        <span t-esc="line['avg_cost_unit']" t-options='{"widget": "monetary", "display_currency": currency}'/>
                                     </td>
                                     <td class="text-right">
                                         <span t-esc="line['total_origin_unit']" t-options='{"widget": "monetary", "display_currency": currency}'/>

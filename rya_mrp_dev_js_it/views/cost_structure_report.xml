@@ -223,7 +223,7 @@
                                         <strong>Total Cost</strong>
                                     </td>
                                     <td class="text-right">
-                                        <span t-esc="total_ratio" t-options='{"widget": "float", "precision": 2}' />
+                                        <span t-esc="total_ratio"  />
                                     </td>
                                 </tr>
                             </tbody>

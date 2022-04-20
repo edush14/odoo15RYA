@@ -67,7 +67,7 @@ class MrpCostStructure(models.AbstractModel):
                        LEFT JOIN mrp_production AS mo on sm.raw_material_production_id = mo.id
                        LEFT JOIN {currency_table} ON currency_table.company_id = mo.company_id
                             WHERE sm.raw_material_production_id in %s AND sm.state != 'cancel' AND sm.product_qty != 0 AND scrapped != 't'
-                         GROUP BY sm.product_id, mo.id, currency_table.rate""".format(currency_table=currency_table,)
+                         GROUP BY sm.product_id, mo.id, currency_table.rate , sm.id """.format(currency_table=currency_table,)
             self.env.cr.execute(query_str, (tuple(mos.ids), ))
             for product_id, mo_id, qty, cost, currency_rate , sm in self.env.cr.fetchall():
                 cost *= currency_rate

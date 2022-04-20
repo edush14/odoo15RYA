@@ -206,13 +206,13 @@
                                         <span class="o_mrp_reports_web_action"  t-esc="ratio.name"/>
                                     </td>
                                     <td class="text-right">
-                                        <span><t t-esc="ratio.quantity"  t-options='{"widget": "float"}' /> </span>
+                                        <span><t t-esc="ratio.quantity"  t-options='{"widget": "float", "precision": 2}' /> </span>
                                     </td>
                                     <td class="text-right">
-                                        <span><t t-esc="ratio.price_unit"  t-options='{"widget": "float"}' /> </span>
+                                        <span><t t-esc="ratio.price_unit"  t-options='{"widget": "float", "precision": 2}' /> </span>
                                     </td>
                                     <td class="text-right">
-                                        <span><t t-esc="ratio.price_total"  t-options='{"widget": "float"}' /> </span>
+                                        <span><t t-esc="ratio.price_total"  t-options='{"widget": "float", "precision": 2}' /> </span>
                                     </td>
                                     <!--
                                     <t t-set="tot_scrap_cost" t-value="tot_scrap_cost + scrap.stock_valuation_layer_ids.value"/>
@@ -223,7 +223,7 @@
                                         <strong>Total Cost</strong>
                                     </td>
                                     <td class="text-right">
-                                        <span t-esc="total_ratio" t-options='{"widget": "float"'/>
+                                        <span t-esc="total_ratio" t-options='{"widget": "float", "precision": 2}' />
                                     </td>
                                 </tr>
                             </tbody>

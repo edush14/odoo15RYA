@@ -10,6 +10,7 @@ class StockMove(models.Model):
     @api.onchange('should_consume_qty','raw_material_production_id.qty_producing')
     def change_store(self):
         for record in self:
+            record._compute_should_consume_qty()
             record.should_consume_qty_store = record.should_consume_qty
 
 

@@ -57,7 +57,7 @@
                                 </td>
                                 <td class="text-right">
                                     OR
-                                    <span t-esc="m['qty']" t-options='{"widget": "float", "decimal_precision": "Product Unit of Measure"}'/>
+                                    <span t-esc="m['sm'].should_consume_qty_store" t-options='{"widget": "float", "decimal_precision": "Product Unit of Measure"}'/>
                                     <span t-esc="m['product_id'].uom_id.name"/>
                                 </td>
                                 <td class="text-right">

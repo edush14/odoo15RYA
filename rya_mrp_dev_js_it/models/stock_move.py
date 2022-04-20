@@ -10,7 +10,7 @@ class StockMove(models.Model):
     @api.depends('raw_material_production_id.qty_producing', 'product_uom_qty', 'product_uom')
     def _compute_should_consume_qty(self):
         for move in self:
-            #mo = move.raw_material_production_id
+            mo = move.raw_material_production_id
             #if not mo or not move.product_uom:
             if not move.product_uom:
                 move.should_consume_qty = 0

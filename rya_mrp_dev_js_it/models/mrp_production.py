@@ -44,7 +44,11 @@ class MrpProduction(models.Model):
 
     def button_mark_done(self):
         for l in self.move_raw_ids:
-            l.should_consume_qty_store = l.should_consume_qty
+            if not l.solicitud_production_line:
+                l.should_consume_qty_store = l.should_consume_qty
+            else:
+                l.should_consume_qty_store = 0
+
 
 
         res = super(MrpProduction, self).button_mark_done()

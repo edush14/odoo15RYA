@@ -77,7 +77,7 @@ class MrpCostStructure(models.AbstractModel):
                     'cost': cost,
                     'product_id': ProductProduct.browse(product_id),
                     'sm': sm_x,
-                    'cost_origin': sm_x.should_consume_qty_store * cost
+                    'cost_origin': sm_x.should_consume_qty_store * ( cost / qty ) if qty != 0 else sm_x.should_consume_qty_store
                 })
                 total_cost_by_mo[mo_id] += cost
                 component_cost_by_mo[mo_id] += cost

@@ -42,6 +42,14 @@ class MrpProduction(models.Model):
                         'price_unit': l.price_unit
                     })
 
+    def button_mark_done(self):
+        for l in self.move_raw_ids:
+            l.should_consume_qty_store = l.should_consume_qty
+        res = super(MrpProduction, self).button_mark_done()
+        return res
+
+
+
 
 class PlantillaRatiosLine(models.Model):
     _name = 'mrp.ratios.lines'

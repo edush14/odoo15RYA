@@ -13,8 +13,8 @@ class StockMove(models.Model):
             qty = record.production_id.product_qty
             qty += record.product_uom_qty
             get_lines = self.env['report.mrp_account_enterprise.mrp_cost_structure'].get_lines(record.production_id)
-            raise ValueError(get_lines['total_cost'])
-            total_per = get_lines['total_cost'] / qty if qty != 0 else 0
+            #raise ValueError(get_lines['total_cost'])
+            total_per = get_lines[0]['total_cost'] / qty if qty != 0 else 0
             record.cost_share = total_per
 
 

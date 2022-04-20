@@ -138,7 +138,7 @@ class MrpCostStructure(models.AbstractModel):
                 amount_to_cost +=  r['cost_origin']
 
             total_origin_unit = amount_to_cost / cantidad_total if cantidad_total != 0 else cantidad_total
-            total_ratiox_unit = total_origin_unit / cantidad_total if cantidad_total != 0 else cantidad_total
+            total_ratiox_unit = total_ratiox / cantidad_total if cantidad_total != 0 else cantidad_total
 
             #raise ValueError(total_ratio)
 

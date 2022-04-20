@@ -48,8 +48,14 @@ class MrpProduction(models.Model):
 
 
         res = super(MrpProduction, self).button_mark_done()
+        total_count = 0
         for l in self.move_byproduct_ids:
-            l.change_qtyy()
+            total_count += l.quantity_done
+            #l.change_qtyy()
+        for l in self.move_byproduct_ids:
+            if total_count != 0:
+                l.cost_share += (l.quantity_done / total_count) * 100
+
         return res
 
 

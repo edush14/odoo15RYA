@@ -77,20 +77,21 @@
 
                             </tr>
                             <tr>
-                                <td colspan="5" class="text-right">
+                                <td colspan="4" class="text-right">
                                     <strong>Total Cost of Components</strong>
+                                </td>
+                                <td class="text-right">
+                                    <span t-esc="line['amount_to_cost']" t-options='{"widget": "monetary", "display_currency": currency}'/>
                                 </td>
                                 <td class="text-right">
                                     <strong t-esc="line['total_cost']" t-options='{"widget": "monetary", "display_currency": currency}'/>
                                 </td>
                             </tr>
                             <tr t-if="not line['qty_by_byproduct_w_costshare'] and line['mo_qty'] &gt; 1" >
-                                <td colspan="4" class="text-right">
+                                <td colspan="5" class="text-right">
                                     <strong>Cost of Components per unit (in <t t-esc="line['product'].uom_id.name"/>)</strong>
                                 </td>
-                                <td class="text-right">
-                                    <span t-esc="line['amount_to_cost']" t-options='{"widget": "monetary", "display_currency": currency}'/>
-                                </td>
+
                                 <td class="text-right">
                                     <span t-esc="line['total_cost'] / line['mo_qty']" t-options='{"widget": "monetary", "display_currency": currency}'/>
                                 </td>
@@ -306,9 +307,11 @@
                                     </td>
                                     <td class="text-right">
                                         <span t-esc="line['total_origin_unit']" t-options='{"widget": "monetary", "display_currency": currency}'/>
+                                        kk
                                     </td>
                                     <td class="text-right">
                                         <span t-esc="line['total_ratio_unit']" t-options='{"widget": "monetary", "display_currency": currency}'/>
+                                        kk
                                     </td>
                                     <td groups="uom.group_uom" class="text-right">
                                         <span t-esc="byproduct[0].uom_id.name"/>

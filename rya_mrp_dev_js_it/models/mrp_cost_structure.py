@@ -77,7 +77,7 @@ class MrpCostStructure(models.AbstractModel):
                     'cost': cost,
                     'product_id': ProductProduct.browse(product_id),
                     'sm': sm_x,
-                    'cost_origin': sm_x.should_consume_qty_store * cost
+                    'cost_origin': sm_x.should_consume_qty_store * cost * sm_x.production_id.quantity_done
                 })
                 total_cost_by_mo[mo_id] += cost
                 component_cost_by_mo[mo_id] += cost
@@ -135,7 +135,7 @@ class MrpCostStructure(models.AbstractModel):
 
 
             for r in raw_material_moves:
-                amount_to_cost += r['sm'].should_consume_qty_store * r['cost']
+                amount_to_cost +=  r['cost_origin']
 
             total_origin_unit = amount_to_cost / cantidad_total if cantidad_total != 0 else cantidad_total
             total_ratiox_unit = total_origin_unit / cantidad_total if cantidad_total != 0 else cantidad_total
@@ -161,6 +161,7 @@ class MrpCostStructure(models.AbstractModel):
                 'ratios': ratios ,
                 'total_ratio': total_ratiox ,
                 'total_origin_unit':  total_origin_unit ,
-                'total_ratio_unit': total_ratiox_unit
+                'total_ratio_unit': total_ratiox_unit ,
+                'amount_to_cost': amount_to_cost
             })
         return res

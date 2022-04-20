@@ -223,7 +223,7 @@
                                         <strong>Total Cost Operating</strong>
                                     </td>
                                     <td class="text-right">
-                                        <span t-esc="line['total_ratio']"  />ee
+                                        <span t-esc="line['total_ratio']" t-options='{"widget": "float", "precision": 2}' />
                                     </td>
                                 </tr>
                             </tbody>

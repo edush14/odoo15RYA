@@ -132,10 +132,10 @@ class MrpCostStructure(models.AbstractModel):
                     cantidad_total += r.quantity_done
 
             amount_to_cost = 0
-            total_origin_unit = 0
+
 
             for r in raw_material_moves:
-                amount_to_cost += r.sm.should_consume_qty_store * r.cost
+                amount_to_cost += r['sm'].should_consume_qty_store * r['cost']
 
             total_origin_unit = amount_to_cost / cantidad_total if cantidad_total != 0 else cantidad_total
             total_ratiox_unit = total_origin_unit / cantidad_total if cantidad_total != 0 else cantidad_total

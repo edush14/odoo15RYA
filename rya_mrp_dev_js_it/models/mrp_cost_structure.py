@@ -124,6 +124,22 @@ class MrpCostStructure(models.AbstractModel):
             for m in ratios:
                 total_ratiox += m.price_total
 
+            cantidad_total = 0
+
+            for m in mos:
+                cantidad_total += m.product_uom_qty
+                for r in m.move_byproduct_ids:
+                    cantidad_total += r.quantity_done
+
+            amount_to_cost = 0
+            total_origin_unit = 0
+
+            for r in raw_material_moves:
+                amount_to_cost += r.sm.should_consume_qty_store * r.cost
+
+            total_origin_unit = amount_to_cost / cantidad_total if cantidad_total != 0 else cantidad_total
+            total_ratiox_unit = total_origin_unit / cantidad_total if cantidad_total != 0 else cantidad_total
+
             #raise ValueError(total_ratio)
 
             res.append({
@@ -143,6 +159,8 @@ class MrpCostStructure(models.AbstractModel):
                 'qty_by_byproduct_w_costshare': qty_by_byproduct_w_costshare,
                 'total_cost_by_product': total_cost_by_product ,
                 'ratios': ratios ,
-                'total_ratio': total_ratiox
+                'total_ratio': total_ratiox ,
+                'total_origin_unit':  total_origin_unit ,
+                'total_ratio_unit': total_ratiox_unit
             })
         return res

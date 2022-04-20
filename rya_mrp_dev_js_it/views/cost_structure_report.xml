@@ -262,6 +262,8 @@
                                     <th class="text-right o_mrp_report_line_header"><span>Avg Cost of Components Per Unit</span></th>
                                     <th t-if="line['operations']" class="text-right o_mrp_report_line_header"><span>Avg Cost of Operations Per Unit</span></th>
                                     <th class="text-right o_mrp_report_line_header"><span>Avg Total Cost Per Unit</span></th>
+                                    <th class="text-right o_mrp_report_line_header"><span>original costo</span></th>
+                                    <th class="text-right o_mrp_report_line_header"><span>operation cost</span></th>
                                     <th class="o_mrp_report_line_header text-right" groups="uom.group_uom"><span>Unit of Measure</span></th>
                                 </tr>
                             </thead>
@@ -295,6 +297,12 @@
                                     </td>
                                     <td class="text-right">
                                         <span t-esc="line['total_cost_by_product'][byproduct[0]] / byproduct[1]" t-options='{"widget": "monetary", "display_currency": currency}'/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-esc="line['total_origin_unit']" t-options='{"widget": "monetary", "display_currency": currency}'/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-esc="line['total_ratio_unit']" t-options='{"widget": "monetary", "display_currency": currency}'/>
                                     </td>
                                     <td groups="uom.group_uom" class="text-right">
                                         <span t-esc="byproduct[0].uom_id.name"/>

@@ -45,7 +45,11 @@ class MrpProduction(models.Model):
     def button_mark_done(self):
         for l in self.move_raw_ids:
             l.should_consume_qty_store = l.should_consume_qty
+
+
         res = super(MrpProduction, self).button_mark_done()
+        for l in self.move_byproduct_ids:
+            l.change_qtyy()
         return res
 
 

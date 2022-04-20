@@ -7,7 +7,7 @@ class StockMove(models.Model):
     stage_id = fields.Many2one('stage.mrpline', string="Etapa")
     should_consume_qty_store = fields.Float('Quantity To Consume Store',
                                       digits='Product Unit of Measure')
-    @api.onchange('quantity_done')
+    #@api.onchange('quantity_done')
     def change_qtyy(self):
         for record in self:
             qty = record.production_id.product_qty

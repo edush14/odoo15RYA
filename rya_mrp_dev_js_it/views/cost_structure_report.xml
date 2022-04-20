@@ -288,6 +288,13 @@
                                     <td class="text-right">
                                         <span t-esc="line['total_cost_by_product'][line['product']] / line['mo_qty']" t-options='{"widget": "monetary", "display_currency": currency}'/>
                                     </td>
+                                    <td class="text-right">
+                                        <span t-esc="line['total_origin_unit']" t-options='{"widget": "monetary", "display_currency": currency}'/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-esc="line['total_ratio_unit']" t-options='{"widget": "monetary", "display_currency": currency}'/>
+
+                                    </td>
                                     <td groups="uom.group_uom" class="text-right">
                                         <span t-esc="line['product'].uom_id.name"/>
                                     </td>
@@ -307,11 +314,10 @@
                                     </td>
                                     <td class="text-right">
                                         <span t-esc="line['total_origin_unit']" t-options='{"widget": "monetary", "display_currency": currency}'/>
-                                        kk
                                     </td>
                                     <td class="text-right">
                                         <span t-esc="line['total_ratio_unit']" t-options='{"widget": "monetary", "display_currency": currency}'/>
-                                        kk
+
                                     </td>
                                     <td groups="uom.group_uom" class="text-right">
                                         <span t-esc="byproduct[0].uom_id.name"/>

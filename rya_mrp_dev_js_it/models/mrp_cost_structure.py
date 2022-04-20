@@ -71,11 +71,13 @@ class MrpCostStructure(models.AbstractModel):
             self.env.cr.execute(query_str, (tuple(mos.ids), ))
             for product_id, mo_id, qty, cost, currency_rate , sm in self.env.cr.fetchall():
                 cost *= currency_rate
+                sm_x = StockMove.browse(sm)
                 raw_material_moves.append({
                     'qty': qty,
                     'cost': cost,
                     'product_id': ProductProduct.browse(product_id),
-                    'sm': StockMove.browse(sm)
+                    'sm': sm_x,
+                    'cost_origin': sm_x.should_consume_qty_store * cost
                 })
                 total_cost_by_mo[mo_id] += cost
                 component_cost_by_mo[mo_id] += cost
@@ -116,6 +118,12 @@ class MrpCostStructure(models.AbstractModel):
                     mo_qty += qty
                 else:
                     mo_qty += m.product_uom_id._compute_quantity(qty, uom)
+
+            ratios = self.env['mrp.ratios.lines'].search([('order_id', 'in', mos.ids)])
+            total_ratio = 0
+            for m in mos:
+                ratios += m.total_amount_ratios
+
             res.append({
                 'product': product,
                 'mo_qty': mo_qty,
@@ -131,6 +139,8 @@ class MrpCostStructure(models.AbstractModel):
                 'operation_cost_by_product': operation_cost_by_product,
                 'qty_by_byproduct': qty_by_byproduct,
                 'qty_by_byproduct_w_costshare': qty_by_byproduct_w_costshare,
-                'total_cost_by_product': total_cost_by_product
+                'total_cost_by_product': total_cost_by_product ,
+                'ratios': ratios ,
+                'total_ratio': total_ratio
             })
         return res

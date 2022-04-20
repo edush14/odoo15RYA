@@ -56,7 +56,6 @@
                                         res-model="product.product"/>
                                 </td>
                                 <td class="text-right">
-                                    OR
                                     <span t-esc="m['sm'].should_consume_qty_store" t-options='{"widget": "float", "decimal_precision": "Product Unit of Measure"}'/>
                                     <span t-esc="m['product_id'].uom_id.name"/>
                                 </td>
@@ -68,14 +67,14 @@
                                     <span t-esc="m['cost'] / m['qty'] if m['qty'] else m['cost']" t-options='{"widget": "monetary", "display_currency": currency}'/>
                                 </td>
                                 <td class="text-right">
-                                  OC
+                                   <span t-esc="m['cost'] / m['qty'] if m['qty'] else m['cost']" t-options='{"widget": "monetary", "display_currency": currency}'/>
                                 </td>
                                 <td class="text-right">
-                                    <span t-esc="m['cost']" t-options='{"widget": "monetary", "display_currency": currency}'/>
+                                    <span t-esc="m['cost_origin']" t-options='{"widget": "monetary", "display_currency": currency}' />
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="3" class="text-right">
+                                <td colspan="5" class="text-right">
                                     <strong>Total Cost of Components</strong>
                                 </td>
                                 <td class="text-right">
@@ -182,6 +181,49 @@
                                     </td>
                                     <td class="text-right">
                                         <span t-esc="tot_scrap_cost" t-options='{"widget": "monetary", "display_currency": currency}'/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </t>
+
+                    <!-- Ratios -->
+                    <t t-if="line['ratios']">
+                        <h3 class="o_mrp_header o_mrp_table_header">Operating costos</h3>
+                        <table class="table table-sm o_mrp_report_table">
+                            <thead>
+                                <tr class="o_mrp_report_header">
+                                    <th class="o_mrp_report_line_header"><span>Descripcion</span></th>
+                                    <th class="text-right o_mrp_report_line_header"><span>Quantity</span></th>
+                                    <th class="text-right o_mrp_report_line_header"><span>Price Unit</span></th>
+                                    <th class="text-right o_mrp_report_line_header"><span>Total Cost</span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="line['ratios']" t-as="ratio"
+                                class="text-success">
+                                    <td>
+                                        <span class="o_mrp_reports_web_action"  t-esc="ratio.name"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span><t t-esc="ratio.quantity"  t-options='{"widget": "float"}' /> </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span><t t-esc="ratio.price_unit"  t-options='{"widget": "float"}' /> </span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span><t t-esc="ratio.price_total"  t-options='{"widget": "float"}' /> </span>
+                                    </td>
+                                    <!--
+                                    <t t-set="tot_scrap_cost" t-value="tot_scrap_cost + scrap.stock_valuation_layer_ids.value"/>
+                                    -->
+                                </tr>
+                                <tr>
+                                    <td colspan="3" class="text-right">
+                                        <strong>Total Cost</strong>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-esc="total_ratio" t-options='{"widget": "float"'/>
                                     </td>
                                 </tr>
                             </tbody>

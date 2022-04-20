@@ -124,6 +124,8 @@ class MrpCostStructure(models.AbstractModel):
             for m in ratios:
                 total_ratio += m.price_total
 
+            raise ValueError(total_ratio)
+
             res.append({
                 'product': product,
                 'mo_qty': mo_qty,

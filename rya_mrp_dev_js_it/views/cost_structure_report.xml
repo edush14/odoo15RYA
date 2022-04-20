@@ -301,7 +301,7 @@
                                         <span t-esc="line['total_origin_unit']" t-options='{"widget": "monetary", "display_currency": currency}'/>
                                     </td>
                                     <td class="text-right">
-                                        <span t-esc="line['total_ratio_unit']" t-options='{"widget": "monetary", "display_currency": currency}'/>
+                                        <span t-esc="line['total_operation_unit']" t-options='{"widget": "monetary", "display_currency": currency}'/>
 
                                     </td>
                                     <td groups="uom.group_uom" class="text-right">

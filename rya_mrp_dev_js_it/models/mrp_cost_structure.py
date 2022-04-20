@@ -120,9 +120,9 @@ class MrpCostStructure(models.AbstractModel):
                     mo_qty += m.product_uom_id._compute_quantity(qty, uom)
 
             ratios = self.env['mrp.ratios.lines'].search([('order_id', 'in', mos.ids)])
-            total_ratio = 0
+            total_ratiox = 0.0
             for m in ratios:
-                total_ratio += m.price_total
+                total_ratiox += m.price_total
 
             #raise ValueError(total_ratio)
 
@@ -143,6 +143,6 @@ class MrpCostStructure(models.AbstractModel):
                 'qty_by_byproduct_w_costshare': qty_by_byproduct_w_costshare,
                 'total_cost_by_product': total_cost_by_product ,
                 'ratios': ratios ,
-                'total_ratio': total_ratio
+                'total_ratio': total_ratiox
             })
         return res

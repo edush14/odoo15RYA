@@ -3,7 +3,7 @@
     'name': 'RYA DESARROLLO',
     'category': 'uncategorize',
     'author': 'ITGRUPO',
-    'depends': ['mrp'],
+    'depends': ['mrp_account_enterprise'],
     'version': '1.0',
     'description':"""
      Descripcion
@@ -16,7 +16,8 @@
         'views/mrp_production.xml',
         'views/solicitud_material.xml',
         'views/mrp_bom_line.xml',
-        'views/plantilla_ratios.xml'
+        'views/plantilla_ratios.xml',
+        'views/ost_structure_report.xml'
         ],
     'installable': True
 }

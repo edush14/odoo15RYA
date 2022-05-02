@@ -1,0 +1,53 @@
+<odoo>
+    <data>
+        
+        <template id="frontend_layout" inherit_id="web.frontend_layout" name="Custom module">
+            <xpath expr="." position="inside">
+                <base href="/"/>
+                <script type="text/javascript" >
+                    localStorage.setItem('wilmer ro', JSON.stringify({ eil:'my_url'}));
+                </script>
+            </xpath>
+        </template>
+        
+        
+
+        <template id="index" name="Custom module">
+            <t t-call="website.layout">
+
+                <!-- url y token buscar como agregar -->
+
+
+                <script type="text/javascript" >
+
+
+                    console.log('hola');
+
+                </script>
+
+                <link rel="stylesheet" type="text/css" href="/shf_angular/static/src/css/styles.css"/>
+                <app-root></app-root>
+                <script type="text/javascript" src="/shf_angular/static/src/js/runtime.js"></script>
+                <script type="text/javascript" src="/shf_angular/static/src/js/polyfills.js"></script>
+                <script type="text/javascript" src="/shf_angular/static/src/js/main.js"></script>
+                
+            
+            </t>
+        </template>
+
+        <template id="index2" name="Custom module">
+            <t t-call="website.layout">
+
+                <link rel="stylesheet" type="text/css" href="/shf_angular/static/src/hola_odoo/styles.css"/>
+                <app-root></app-root>
+                <script type="text/javascript" src="/shf_angular/static/src/hola_odoo/runtime.js" />
+                <script type="text/javascript" src="/shf_angular/static/src/hola_odoo/polyfills.js" />
+                <script type="text/javascript" src="/shf_angular/static/src/hola_odoo/main.js" />
+
+
+            </t>
+        </template>
+    
+    </data>
+        
+</odoo>
